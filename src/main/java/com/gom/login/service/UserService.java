@@ -22,11 +22,14 @@ public class UserService {
 
     @Transactional
     public RegisterUserDto.Response registerUser(RegisterUserDto.Request request){
+        if(userRepository.findById(request.getUserId()).isPresent()) {
+            throw new GeneralException(ErrorCode.DUPLICATED_USER_ID);
+        }
         User user = modelMapper.map(request, User.class);
         user.setPassword(passwordEncoder.encode(request.getPassword()));
 
         return modelMapper.map(userRepository.save(user), RegisterUserDto.Response.class);
     }
 
-//        userRepository.findById(request.getUserId()).orElseThrow(() -> new GeneralException(ErrorCode.DUPLICATED_USER_ID));
+
 }
