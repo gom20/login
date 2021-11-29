@@ -12,6 +12,8 @@ public enum ErrorCode {
 
     OK(0, "Success"),
     DUPLICATED_USER_ID(10000, "Duplicated User Id Error"),
+    ACCOUNT_INVALID(10001, "Account Invalid Error"),
+    PASSWORD_INVALID(10002, "Password Error"),
     BAD_REQUEST(20000, "Bad Request"),
     INTERNAL_ERROR(20001, "Server Internal Error"),
     SPRING_INTERNAL_ERROR(20002, "Spring Internal Error");

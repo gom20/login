@@ -28,6 +28,7 @@ public class APIExceptionHandler {
 
     @ExceptionHandler(GeneralException.class)
     public ErrorResponse handleException(GeneralException e, HttpServletRequest request){
+        e.printStackTrace();
         return ErrorResponse.builder()
                 .code(e.getErrorCode().getCode())
                 .message(e.getErrorCode().getMessage())
@@ -36,6 +37,7 @@ public class APIExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     public ErrorResponse handleException(Exception e, HttpServletRequest request){
+        e.printStackTrace();
         return ErrorResponse.builder()
                 .code(INTERNAL_ERROR.getCode())
                 .message(INTERNAL_ERROR.getMessage())
